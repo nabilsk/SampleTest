@@ -4,27 +4,17 @@ import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
-  const [alertvisiable, setAlertvisiable] = useState(false);
-  let items = ["New york", "Tokyo", "London", "Test", "Qwerty"];
-
-  const handleSelectedItem = (item: string) => {
-    console.log(item);
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "Bug1", isFixed: false },
+    { id: 2, title: "Bug2", isFixed: false },
+  ]);
+  const updateBugStatus = () => {
+    setBugs(bugs.map((bug) => (bug.id == 1 ? { ...bug, isFixed: true } : bug)));
   };
+
   return (
     <div>
-      {alertvisiable && (
-        <Alert onClose={() => setAlertvisiable(false)}>Test Alert</Alert>
-      )}
-      <ListGroup
-        heading="Cities"
-        items={items}
-        onSelectedItem={handleSelectedItem}
-      />
-      <Button
-        label="test"
-        color="success"
-        onClick={() => setAlertvisiable(true)}
-      />
+      <Button label="test" color="success" onClick={() => updateBugStatus} />
     </div>
   );
 }
