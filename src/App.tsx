@@ -4,22 +4,28 @@ import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
-  const [tags, setTags] = useState(["happy", "cheerful"]);
+  const [customer, setCustomer] = useState({
+    name: "Sam",
+    address: {
+      city: "Mumbai",
+      pincode: 400060,
+    },
+  });
 
-  const updateBugStatus = () => {
-    //add new item in array
-    setTags([...tags, "hello"]);
-
-    //remove element from array
-    setTags(tags.filter((tag) => tag !== "happy"));
-
-    //update elementt in array
-    setTags(tags.map((tag) => (tag === "happy" ? "Test" : tag)));
+  const updateCustomerStatus = () => {
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, pincode: 400061 },
+    });
   };
 
   return (
     <div>
-      <Button label="test" color="success" onClick={() => updateBugStatus} />
+      <Button
+        label="test"
+        color="success"
+        onClick={() => updateCustomerStatus}
+      />
     </div>
   );
 }
