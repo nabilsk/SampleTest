@@ -4,12 +4,17 @@ import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug1", isFixed: false },
-    { id: 2, title: "Bug2", isFixed: false },
-  ]);
+  const [tags, setTags] = useState(["happy", "cheerful"]);
+
   const updateBugStatus = () => {
-    setBugs(bugs.map((bug) => (bug.id == 1 ? { ...bug, isFixed: true } : bug)));
+    //add new item in array
+    setTags([...tags, "hello"]);
+
+    //remove element from array
+    setTags(tags.filter((tag) => tag !== "happy"));
+
+    //update elementt in array
+    setTags(tags.map((tag) => (tag === "happy" ? "Test" : tag)));
   };
 
   return (
